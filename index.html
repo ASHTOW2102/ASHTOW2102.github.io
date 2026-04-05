@@ -187,6 +187,21 @@ pre.code-block{
 .event-title{font-size:19px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:10px;}
 .event-meta{font-size:13px;color:var(--text2);margin-bottom:10px;}
 .event-desc{font-size:14px;color:var(--text2);line-height:1.75;}
+.preview-card{position:relative;cursor:zoom-in;}
+.preview-card::after{
+  content:'Preview';
+  position:absolute;top:14px;right:14px;z-index:2;
+  padding:6px 10px;border-radius:999px;
+  background:rgba(8,10,15,.82);border:1px solid rgba(255,255,255,.14);
+  color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.5px;
+  opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;
+  pointer-events:none;
+}
+.preview-card:hover::after,.preview-card:focus-visible::after{opacity:1;transform:none;}
+.preview-card .event-media,.preview-card .cert-thumb{position:relative;overflow:hidden;}
+.preview-card .event-media img,.preview-card .cert-thumb img{transition:transform .28s ease,filter .28s ease;}
+.preview-card:hover .event-media img,.preview-card:hover .cert-thumb img,
+.preview-card:focus-visible .event-media img,.preview-card:focus-visible .cert-thumb img{transform:scale(1.04);filter:brightness(1.06);}
 
 /* â”€â”€ PROCESS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #process{padding:80px 0;background:var(--bg2);}
@@ -262,6 +277,38 @@ pre.code-block{
 .cert-issuer{font-size:11px;color:var(--text3);}
 .cert-note{font-size:12px;color:var(--text2);line-height:1.6;margin-top:8px;}
 .cert-badge{margin-left:auto;background:rgba(34,211,160,.08);border:1px solid rgba(34,211,160,.2);border-radius:6px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--green);white-space:nowrap;}
+
+.preview-modal{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:center;justify-content:center;
+  padding:28px;background:rgba(4,7,12,.82);backdrop-filter:blur(16px);
+  opacity:0;pointer-events:none;transition:opacity .22s ease;
+}
+.preview-modal.open{opacity:1;pointer-events:auto;}
+.preview-dialog{
+  width:min(1040px,100%);max-height:calc(100vh - 56px);overflow:auto;
+  background:var(--card);border:1px solid var(--border2);border-radius:20px;
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
+}
+.preview-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);}
+.preview-visual{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(34,211,160,.08));min-height:320px;}
+.preview-visual img{width:100%;height:100%;display:block;object-fit:contain;background:#0b0f18;}
+.preview-copy{padding:28px 28px 24px;}
+.preview-kicker{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.preview-title{font-size:30px;font-weight:900;line-height:1.12;letter-spacing:-1px;color:#fff;margin-bottom:12px;}
+.preview-meta{font-size:13px;color:var(--text2);margin-bottom:12px;}
+.preview-desc{font-size:14px;color:var(--text2);line-height:1.8;}
+.preview-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+.preview-link,.preview-close{
+  border-radius:10px;padding:11px 16px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;
+}
+.preview-link{background:var(--accent);color:#fff;}
+.preview-close{background:transparent;color:var(--text2);border:1px solid var(--border2);}
+.preview-x{
+  position:absolute;top:18px;right:18px;z-index:2;
+  width:38px;height:38px;border-radius:999px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(8,10,15,.86);color:#fff;font-size:20px;cursor:pointer;
+}
 
 
 /* â”€â”€ CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -352,6 +399,8 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   }
   .services-tabs::-webkit-scrollbar{display:none;}
   .svc-panel.active{grid-template-columns:1fr;gap:28px;}
+  .preview-grid{grid-template-columns:1fr;}
+  .preview-copy{padding:22px 20px 20px;}
   .svc-title{font-size:30px;}
   .svc-desc{font-size:14px;}
   .contact-h{font-size:clamp(30px,12vw,44px);letter-spacing:-1.5px;}
@@ -378,6 +427,8 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   .term-body{font-size:11px;}
   .tl-item{grid-template-columns:1fr;gap:6px;}
   .big-word{font-size:clamp(30px,12vw,48px);}
+  .preview-modal{padding:14px;}
+  .preview-title{font-size:24px;}
 }
 
 </style>
@@ -528,7 +579,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="sec-label reveal">Highlights</div>
   <h2 class="sec-h2 reveal">Events, hackathons,<br>and field <em>work</em>.</h2>
   <div class="events-grid">
-    <div class="event-card reveal">
+    <div class="event-card preview-card reveal" tabindex="0">
       <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="IIIT Delhi AI hackathon event"/></div>
       <div class="event-copy">
         <div class="event-tag">Conducted</div>
@@ -537,7 +588,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
       </div>
     </div>
-    <div class="event-card reveal reveal-d1">
+    <div class="event-card preview-card reveal reveal-d1" tabindex="0">
       <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="IIT Banaras AI hackathon event"/></div>
       <div class="event-copy">
         <div class="event-tag">Conducted</div>
@@ -546,7 +597,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="event-desc">Contributed to AI hackathon execution at IIT Banaras, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
       </div>
     </div>
-    <div class="event-card reveal reveal-d2">
+    <div class="event-card preview-card reveal reveal-d2" tabindex="0">
       <div class="event-media"><img src="assets/events/Newgen recog.jpg" alt="Newgen Software Campus Cadre 2024 Tech Buddy appreciation"/></div>
       <div class="event-copy">
         <div class="event-tag">Appreciation</div>
@@ -737,22 +788,22 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 
   <h3 style="font-weight:800;font-size:22px;color:#fff;margin:48px 0 20px;letter-spacing:-.5px;">Certifications & Awards</h3>
   <div class="certs-row">
-    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c reveal">
+    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c preview-card reveal">
       <div class="cert-thumb"><img src="assets/certificates/AI 900.jpg" alt="Azure AI Fundamentals certificate"/></div>
       <div class="cert-copy"><div class="cert-name">Azure AI Fundamentals</div><div class="cert-issuer">Microsoft - AI-900</div></div>
       <div class="cert-badge">VERIFIED ?</div>
     </a>
-    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c reveal reveal-d1">
+    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c preview-card reveal reveal-d1">
       <div class="cert-thumb"><img src="assets/certificates/GENAI-Leader.jpg" alt="Generative AI Leader certificate"/></div>
       <div class="cert-copy"><div class="cert-name">Generative AI Leader</div><div class="cert-issuer">Google Cloud</div></div>
       <div class="cert-badge">VERIFIED ?</div>
     </a>
-    <div class="cert-c reveal reveal-d2">
+    <div class="cert-c preview-card reveal reveal-d2" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/NCC.jpg" alt="NCC C Certificate"/></div>
       <div class="cert-copy"><div class="cert-name">NCC C Certificate</div><div class="cert-issuer">National Cadet Corps - Bravo</div></div>
       <div class="cert-badge" style="background:rgba(34,211,160,.1);border-color:rgba(34,211,160,.3);">CERTIFIED</div>
     </div>
-    <div class="cert-c reveal reveal-d3">
+    <div class="cert-c preview-card reveal reveal-d3" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/Newgen certificate pinnacle.jpg" alt="Pinnacle Performance Award certificate from Newgen"/></div>
       <div class="cert-copy">
         <div class="cert-name">Pinnacle Performance Award</div>
@@ -761,7 +812,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.28);color:var(--amber);">AWARD</div>
     </div>
-    <div class="cert-c reveal reveal-d4">
+    <div class="cert-c preview-card reveal reveal-d4" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/Newgen certificate high five.jpg" alt="High Five Award certificate from Newgen"/></div>
       <div class="cert-copy">
         <div class="cert-name">High Five Award</div>
@@ -773,6 +824,27 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   </div>
 </div>
 </section>
+
+<div class="preview-modal" id="previewModal" aria-hidden="true">
+  <div class="preview-dialog">
+    <button class="preview-x" type="button" id="previewX" aria-label="Close preview">&times;</button>
+    <div class="preview-grid">
+      <div class="preview-visual">
+        <img id="previewImage" src="" alt=""/>
+      </div>
+      <div class="preview-copy">
+        <div class="preview-kicker" id="previewKicker">Preview</div>
+        <div class="preview-title" id="previewTitle"></div>
+        <div class="preview-meta" id="previewMeta"></div>
+        <div class="preview-desc" id="previewDesc"></div>
+        <div class="preview-actions">
+          <a class="preview-link" id="previewLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Open credential</a>
+          <button class="preview-close" id="previewClose" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
@@ -825,6 +897,86 @@ function showSvc(id,btn){
   document.getElementById('svc-'+id).classList.add('active');
   btn.classList.add('active');
 }
+
+const previewModal=document.getElementById('previewModal');
+const previewImage=document.getElementById('previewImage');
+const previewKicker=document.getElementById('previewKicker');
+const previewTitle=document.getElementById('previewTitle');
+const previewMeta=document.getElementById('previewMeta');
+const previewDesc=document.getElementById('previewDesc');
+const previewLink=document.getElementById('previewLink');
+const previewClose=document.getElementById('previewClose');
+const previewX=document.getElementById('previewX');
+let lastPreviewTrigger=null;
+
+function getCardPreviewData(card){
+  const image=card.querySelector('img');
+  const title=card.querySelector('.event-title,.cert-name')?.textContent?.trim() || image?.alt || 'Preview';
+  const meta=card.querySelector('.event-meta,.cert-issuer')?.textContent?.trim() || '';
+  const desc=card.querySelector('.event-desc,.cert-note')?.textContent?.trim() || meta || title;
+  const kicker=card.querySelector('.event-tag')?.textContent?.trim() || 'Credential';
+  const link=card.tagName==='A' ? card.getAttribute('href') : '';
+  return {
+    src:image?.getAttribute('src') || '',
+    alt:image?.getAttribute('alt') || title,
+    title,
+    meta,
+    desc,
+    kicker,
+    link
+  };
+}
+
+function openPreview(card){
+  const data=getCardPreviewData(card);
+  if(!data.src)return;
+  lastPreviewTrigger=card;
+  previewImage.src=data.src;
+  previewImage.alt=data.alt;
+  previewKicker.textContent=data.kicker;
+  previewTitle.textContent=data.title;
+  previewMeta.textContent=data.meta;
+  previewMeta.style.display=data.meta ? '' : 'none';
+  previewDesc.textContent=data.desc;
+  if(data.link){
+    previewLink.href=data.link;
+    previewLink.style.display='inline-flex';
+  } else {
+    previewLink.style.display='none';
+  }
+  previewModal.classList.add('open');
+  previewModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closePreview(){
+  previewModal.classList.remove('open');
+  previewModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(lastPreviewTrigger)lastPreviewTrigger.focus();
+}
+
+document.querySelectorAll('.preview-card').forEach(card=>{
+  card.addEventListener('click',e=>{
+    if(card.tagName==='A')e.preventDefault();
+    openPreview(card);
+  });
+  card.addEventListener('keydown',e=>{
+    if(e.key==='Enter' || e.key===' '){
+      e.preventDefault();
+      openPreview(card);
+    }
+  });
+});
+
+previewClose.addEventListener('click',closePreview);
+previewX.addEventListener('click',closePreview);
+previewModal.addEventListener('click',e=>{
+  if(e.target===previewModal)closePreview();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && previewModal.classList.contains('open'))closePreview();
+});
 
 // â”€â”€ Terminal Animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const termCmds=[
