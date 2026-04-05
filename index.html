@@ -288,6 +288,79 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 .reveal.visible{opacity:1;transform:none;}
 .reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}.reveal-d4{transition-delay:.4s;}
 
+@media (max-width: 1100px){
+  nav{padding:0 24px;}
+  .wrap{padding:0 24px;}
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .about-grid,.svc-panel.active,.contact-grid{grid-template-columns:1fr;gap:36px;}
+  .skills-grid,.certs-row{grid-template-columns:1fr 1fr;}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width: 780px){
+  nav{
+    height:auto;
+    min-height:64px;
+    padding:14px 18px;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .wrap{padding:0 18px;}
+  #hero{min-height:auto;padding:120px 0 48px;}
+  .nav-links{
+    order:3;
+    width:100%;
+    overflow-x:auto;
+    gap:18px;
+    padding-bottom:4px;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-btn{padding:8px 14px;font-size:12px;}
+  .hero-h1{font-size:clamp(38px,13vw,58px);letter-spacing:-2px;}
+  .hero-sub{font-size:15px;max-width:none;margin:22px 0 30px;}
+  .hero-stats{gap:16px;flex-wrap:wrap;margin-bottom:28px;}
+  .hstat{min-width:140px;}
+  .hero-actions{flex-direction:column;align-items:stretch;}
+  .btn-main,.btn-ghost{text-align:center;}
+  .process-grid,.skills-grid,.certs-row,.form-row{grid-template-columns:1fr;}
+  .services-tabs{
+    width:100%;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:6px;
+    scrollbar-width:none;
+  }
+  .services-tabs::-webkit-scrollbar{display:none;}
+  .svc-panel.active{grid-template-columns:1fr;gap:28px;}
+  .svc-title{font-size:30px;}
+  .svc-desc{font-size:14px;}
+  .contact-h{font-size:clamp(30px,12vw,44px);letter-spacing:-1.5px;}
+  .clink{padding:14px;}
+  .clink-val{font-size:12.5px;word-break:break-word;}
+  footer{
+    padding:22px 18px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+}
+
+@media (max-width: 520px){
+  .hero-stats{flex-direction:column;gap:14px;}
+  .hstat{min-width:unset;}
+  .code-card,.term-card,.monitor-card,.skill-card,.cert-c,.proc-step,.svc-visual,.clink{border-radius:12px;}
+  pre.code-block{
+    font-size:11px;
+    line-height:1.6;
+    overflow-x:auto;
+    white-space:pre;
+  }
+  .term-body{font-size:11px;}
+  .tl-item{grid-template-columns:1fr;gap:6px;}
+  .big-word{font-size:clamp(30px,12vw,48px);}
+}
+
 </style>
 </head>
 <body>
