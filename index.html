@@ -163,6 +163,8 @@ pre.code-block{
 #about{padding:100px 0;}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
 .about-text p{color:var(--text2);line-height:1.85;font-size:15.5px;margin-bottom:18px;}
+.about-companies{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+.company-chip{padding:8px 12px;border-radius:999px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);font-family:var(--mono);font-size:11px;color:var(--text2);}
 .about-timeline{display:flex;flex-direction:column;gap:0;}
 .tl-item{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);}
 .tl-item:first-child{padding-top:0;}
@@ -391,7 +393,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <a href="#events">Events</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="mailto:ashish210200@gmail.com?subject=Let's%20Talk%20-%20Ashish%20Chaturvedi" class="nav-btn">Let's Talk →</a>
+  <a href="#contact" class="nav-btn">Let's Talk</a>
 </nav>
 
 <!-- HERO -->
@@ -461,34 +463,6 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 </div>
 </section>
 
-<!-- EVENTS -->
-<section class="section" id="events">
-<div class="wrap" style="padding-top:90px;padding-bottom:90px;">
-  <div class="sec-label reveal">Highlights</div>
-  <h2 class="sec-h2 reveal">Events, hackathons,<br>and field <em>work</em>.</h2>
-  <div class="events-grid">
-    <div class="event-card reveal">
-      <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="IIIT Delhi AI hackathon event"/></div>
-      <div class="event-copy">
-        <div class="event-tag">Conducted</div>
-        <div class="event-title">AI Hackathon Sessions at IIIT Delhi</div>
-        <div class="event-meta">Mentoring, technical guidance, and AI workflow discussions</div>
-        <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
-      </div>
-    </div>
-    <div class="event-card reveal reveal-d1">
-      <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="IIT Banaras AI hackathon event"/></div>
-      <div class="event-copy">
-        <div class="event-tag">Conducted</div>
-        <div class="event-title">AI Hackathon Sessions at IIT Banaras</div>
-        <div class="event-meta">Hands-on support for applied AI and prototyping</div>
-        <div class="event-desc">Contributed to AI hackathon execution at IIT Banaras, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
@@ -516,6 +490,12 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <p>My early experience was in enterprise banking systems, working as an Application Engineer on software used across I&amp;M Bank operations in Kenya, Rwanda, and Tanzania. That work established a practical approach to engineering, with an emphasis on reliability, delivery, and real business impact.</p>
       <p>Over time, the focus shifted toward AI engineering, including LLM applications, RAG pipelines, agentic workflows, and automation systems. Work delivered for Julius Baer included enterprise AI assistants that reduced query resolution time by 35%.</p>
       <p>Recent work has focused on production AI platforms for BBC News, UK, covering knowledge retrieval systems, document ingestion pipelines, intelligent workflows, and Docker-based AWS ECS deployments operating at 99.9% uptime.</p>
+      <div class="about-companies">
+        <span class="company-chip">BBC News</span>
+        <span class="company-chip">Julius Baer</span>
+        <span class="company-chip">I&amp;M Bank Kenya</span>
+        <span class="company-chip">Newgen Software</span>
+      </div>
     </div>
     <div class="about-timeline reveal reveal-d1">
       <div class="tl-item">
@@ -533,6 +513,34 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <div class="tl-item">
         <div class="tl-tag">2019–23</div>
         <div><div class="tl-title">BTech — Electrical Engineering</div><div class="tl-sub">MITS Gwalior, M.P.</div><div class="tl-desc">Built the foundation. NCC C Certificate · Bravo Wing.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EVENTS -->
+<section class="section" id="events">
+<div class="wrap" style="padding-top:90px;padding-bottom:90px;">
+  <div class="sec-label reveal">Highlights</div>
+  <h2 class="sec-h2 reveal">Events, hackathons,<br>and field <em>work</em>.</h2>
+  <div class="events-grid">
+    <div class="event-card reveal">
+      <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="IIIT Delhi AI hackathon event"/></div>
+      <div class="event-copy">
+        <div class="event-tag">Conducted</div>
+        <div class="event-title">AI Hackathon Sessions at IIIT Delhi</div>
+        <div class="event-meta">Mentoring, technical guidance, and AI workflow discussions</div>
+        <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
+      </div>
+    </div>
+    <div class="event-card reveal reveal-d1">
+      <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="IIT Banaras AI hackathon event"/></div>
+      <div class="event-copy">
+        <div class="event-tag">Conducted</div>
+        <div class="event-title">AI Hackathon Sessions at IIT Banaras</div>
+        <div class="event-meta">Hands-on support for applied AI and prototyping</div>
+        <div class="event-desc">Contributed to AI hackathon execution at IIT Banaras, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
       </div>
     </div>
   </div>
@@ -855,4 +863,8 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
+
+
+
 
