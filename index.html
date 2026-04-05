@@ -149,7 +149,7 @@ pre.code-block{
 .marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;overflow:hidden;background:rgba(59,130,246,.02);}
 .marquee-track{display:flex;gap:40px;animation:marquee 28s linear infinite;white-space:nowrap;}
 .m-item{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
-.m-item::before{content:'â—†';color:var(--accent);font-size:7px;}
+.m-item::before{content:'\25C6';color:var(--accent);font-size:7px;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* â”€â”€ SECTION HEADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -249,16 +249,18 @@ pre.code-block{
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:2px;}
 
 .certs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.cert-c{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:border-color .2s;}
+.cert-c{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:14px;text-decoration:none;transition:border-color .2s;}
 .cert-c:hover{border-color:var(--accent);}
 .cert-thumb{width:72px;height:72px;border-radius:10px;overflow:hidden;flex-shrink:0;border:1px solid var(--border);}
 .cert-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.cert-copy{flex:1;}
 .cert-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .cert-ico.ms{background:rgba(0,120,212,.12);border:1px solid rgba(0,120,212,.2);}
 .cert-ico.gc{background:rgba(234,67,53,.08);border:1px solid rgba(234,67,53,.18);}
 .cert-ico.ncc{background:rgba(34,211,160,.08);border:1px solid rgba(34,211,160,.2);}
 .cert-name{font-weight:700;font-size:13px;color:#fff;margin-bottom:2px;}
 .cert-issuer{font-size:11px;color:var(--text3);}
+.cert-note{font-size:12px;color:var(--text2);line-height:1.6;margin-top:8px;}
 .cert-badge{margin-left:auto;background:rgba(34,211,160,.08);border:1px solid rgba(34,211,160,.2);border-radius:6px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--green);white-space:nowrap;}
 
 
@@ -404,7 +406,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <div class="hero-eyebrow">Available for new projects</div>
     <h1 class="hero-h1">Designing AI<br><em>Systems</em><br>That Ship.</h1>
     <p class="hero-sub">
-      I'm Ashish Chaturvedi â€” Software Developer &amp; AI Engineer.<br>
+      I'm Ashish Chaturvedi - Software Developer &amp; AI Engineer.<br>
       Designing AI systems, AI agents, and automation workflows for media, banking, and enterprise teams. I work across AI architecture, agent design, MCP integrations, orchestration, APIs, and end-to-end delivery from concept to production.
     </p>
     <div class="hero-stats">
@@ -414,7 +416,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     </div>
     <div class="hero-actions">
       <a href="#services" class="btn-main">View Expertise</a>
-      <a href="https://github.com/ASHTOW2102" target="_blank" class="btn-ghost">GitHub â†’</a>
+      <a href="https://github.com/ASHTOW2102" target="_blank" class="btn-ghost">GitHub -&gt;</a>
     </div>
   </div>
 
@@ -433,7 +435,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <span class="prop">backend</span>: [<span class="str">"Python"</span>, <span class="str">"FastAPI"</span>,
                <span class="str">"Node.js"</span>, <span class="str">"Docker"</span>],
   },
-  <span class="prop">location</span>: <span class="str">"Noida, UP ðŸ‡®ðŸ‡³"</span>,
+  <span class="prop">location</span>: <span class="str">"Noida, UP, India"</span>,
   <span class="prop">passion</span>: <span class="num">Infinity</span>,
 }); <span class="cmt">// Compiling...</span></pre>
     </div>
@@ -442,10 +444,10 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <div class="term-card">
       <div class="term-header">
         <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
-        <span class="term-title">terminal â€” zsh</span>
+        <span class="term-title">terminal - zsh</span>
       </div>
       <div class="term-body" id="termBody">
-        <div class="term-line"><span class="prompt">âžœ</span><span class="term-cmd" id="termCmd"></span><span class="term-cursor" id="termCursor"></span></div>
+        <div class="term-line"><span class="prompt">&gt;</span><span class="term-cmd" id="termCmd"></span><span class="term-cursor" id="termCursor"></span></div>
         <div class="term-line"><span class="term-out" id="termOut"></span></div>
         <div class="term-line" id="termLine3" style="display:none"><span class="term-out" id="termOut2"></span></div>
       </div>
@@ -470,13 +472,13 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <div class="m-item">RAG Pipelines</div><div class="m-item">FastAPI</div><div class="m-item">Docker</div>
     <div class="m-item">n8n</div><div class="m-item">Power Automate</div><div class="m-item">Azure OpenAI</div>
     <div class="m-item">Python</div><div class="m-item">MCP Servers</div><div class="m-item">Vector DBs</div>
-    <div class="m-item">NCC C Â· Bravo</div><div class="m-item">Valorant</div><div class="m-item">Cricket</div>
+    <div class="m-item">NCC C - Bravo</div><div class="m-item">Valorant</div><div class="m-item">Cricket</div>
     <!-- duplicate -->
     <div class="m-item">OpenAI</div><div class="m-item">Claude</div><div class="m-item">LangGraph</div>
     <div class="m-item">RAG Pipelines</div><div class="m-item">FastAPI</div><div class="m-item">Docker</div>
     <div class="m-item">n8n</div><div class="m-item">Power Automate</div><div class="m-item">Azure OpenAI</div>
     <div class="m-item">Python</div><div class="m-item">MCP Servers</div><div class="m-item">Vector DBs</div>
-    <div class="m-item">NCC C Â· Bravo</div><div class="m-item">Valorant</div><div class="m-item">Cricket</div>
+    <div class="m-item">NCC C - Bravo</div><div class="m-item">Valorant</div><div class="m-item">Cricket</div>
   </div>
 </div>
 
@@ -501,19 +503,19 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <div class="about-timeline reveal reveal-d1">
       <div class="tl-item">
         <div class="tl-tag present">Present</div>
-        <div><div class="tl-title">AI Engineer â€” BBC News, UK</div><div class="tl-sub">Enterprise AI Delivery</div><div class="tl-desc">RAG systems, LangGraph agents, AWS ECS deployments</div></div>
+        <div><div class="tl-title">AI Engineer - BBC News, UK</div><div class="tl-sub">Enterprise AI Delivery</div><div class="tl-desc">RAG systems, LangGraph agents, AWS ECS deployments</div></div>
       </div>
       <div class="tl-item">
-        <div class="tl-tag">2024â€“25</div>
-        <div><div class="tl-title">AI Engineer â€” Julius Baer</div><div class="tl-sub">Enterprise Banking AI</div><div class="tl-desc">LLM agents, Claude, enterprise GenAI workflows</div></div>
+        <div class="tl-tag">2024-25</div>
+        <div><div class="tl-title">AI Engineer - Julius Baer</div><div class="tl-sub">Enterprise Banking AI</div><div class="tl-desc">LLM agents, Claude, enterprise GenAI workflows</div></div>
       </div>
       <div class="tl-item">
-        <div class="tl-tag">2023â€“24</div>
-        <div><div class="tl-title">Application Engineer</div><div class="tl-sub">Newgen Software Â· I&M Bank Kenya</div><div class="tl-desc">Loan origination systems across 2 African countries</div></div>
+        <div class="tl-tag">2023-24</div>
+        <div><div class="tl-title">Application Engineer</div><div class="tl-sub">Newgen Software - I&amp;M Bank Kenya</div><div class="tl-desc">Loan origination systems across 2 African countries</div></div>
       </div>
       <div class="tl-item">
-        <div class="tl-tag">2019â€“23</div>
-        <div><div class="tl-title">BTech â€” Electrical Engineering</div><div class="tl-sub">MITS Gwalior, M.P.</div><div class="tl-desc">Built the foundation. NCC C Certificate Â· Bravo Wing.</div></div>
+        <div class="tl-tag">2019-23</div>
+        <div><div class="tl-title">BTech - Electrical Engineering</div><div class="tl-sub">MITS Gwalior, M.P.</div><div class="tl-desc">Built the foundation. NCC C Certificate - Bravo Wing.</div></div>
       </div>
     </div>
   </div>
@@ -563,10 +565,10 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="sec-label reveal">How I Work</div>
   <h2 class="sec-h2 reveal" style="margin-bottom:40px;">Your vision. My systems.<br><em>Real results</em>.</h2>
   <div class="process-grid">
-    <div class="proc-step reveal"><div class="proc-num">01</div><div class="proc-icon">ðŸ’¬</div><div class="proc-title">Understand</div><div class="proc-desc">Deep-dive into your problem, requirements, and business goals. No fluff, just clarity.</div></div>
-    <div class="proc-step reveal reveal-d1"><div class="proc-num">02</div><div class="proc-icon">ðŸ—ºï¸</div><div class="proc-title">Architect</div><div class="proc-desc">Design the technical roadmap â€” LLM strategy, data pipelines, API architecture.</div></div>
-    <div class="proc-step reveal reveal-d2"><div class="proc-num">03</div><div class="proc-icon">âš™ï¸</div><div class="proc-title">Build</div><div class="proc-desc">Clean, production-grade code with regular demos, feedback loops, and full transparency.</div></div>
-    <div class="proc-step reveal reveal-d3"><div class="proc-num">04</div><div class="proc-icon">ðŸš€</div><div class="proc-title">Deploy</div><div class="proc-desc">Docker + cloud deployment with monitoring, guardrails, and post-launch support.</div></div>
+    <div class="proc-step reveal"><div class="proc-num">01</div><div class="proc-title">Understand</div><div class="proc-desc">Deep-dive into your problem, requirements, and business goals. No fluff, just clarity.</div></div>
+    <div class="proc-step reveal reveal-d1"><div class="proc-num">02</div><div class="proc-title">Architect</div><div class="proc-desc">Design the technical roadmap - LLM strategy, data pipelines, API architecture.</div></div>
+    <div class="proc-step reveal reveal-d2"><div class="proc-num">03</div><div class="proc-title">Build</div><div class="proc-desc">Clean, production-grade code with regular demos, feedback loops, and full transparency.</div></div>
+    <div class="proc-step reveal reveal-d3"><div class="proc-num">04</div><div class="proc-title">Deploy</div><div class="proc-desc">Docker + cloud deployment with monitoring, guardrails, and post-launch support.</div></div>
   </div>
 </div>
 </section>
@@ -643,7 +645,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <div>
         <div class="svc-badge">Machine Learning</div>
         <div class="svc-title">ML Models &<br>Data Science</div>
-        <div class="svc-desc">End-to-end machine learning pipelines â€” from data preprocessing and feature engineering to model training, evaluation, and deployment on HuggingFace.</div>
+        <div class="svc-desc">End-to-end machine learning pipelines - from data preprocessing and feature engineering to model training, evaluation, and deployment on HuggingFace.</div>
         <div class="svc-tags"><span class="svc-tag">TensorFlow</span><span class="svc-tag">PyTorch</span><span class="svc-tag">Scikit-learn</span><span class="svc-tag">Pandas</span><span class="svc-tag">NumPy</span><span class="svc-tag">Gradio</span><span class="svc-tag">HuggingFace</span></div>
       </div>
       <div class="svc-visual">
@@ -659,7 +661,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <div>
         <div class="svc-badge">Full Stack</div>
         <div class="svc-title">End-to-End<br>Development</div>
-        <div class="svc-desc">Building complete applications from database schema to UI â€” integrating AI backends with intuitive front-ends. Power Automate, Gradio, and client-facing AI interfaces.</div>
+        <div class="svc-desc">Building complete applications from database schema to UI - integrating AI backends with intuitive front-ends. Power Automate, Gradio, and client-facing AI interfaces.</div>
         <div class="svc-tags"><span class="svc-tag">JavaScript</span><span class="svc-tag">HTML/CSS</span><span class="svc-tag">Power Automate</span><span class="svc-tag">Gradio</span><span class="svc-tag">Playwright</span><span class="svc-tag">n8n</span></div>
       </div>
       <div class="svc-visual">
@@ -678,19 +680,19 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 <!-- BIG WORD MARQUEE -->
 <div class="big-marquee">
   <div class="big-track">
-    <span class="big-word">CODE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word lit">BUILD</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word">DEPLOY</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word lit">SCALE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word">ITERATE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word lit">SHIP</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
+    <span class="big-word">CODE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word lit">BUILD</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word">DEPLOY</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word lit">SCALE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word">ITERATE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word lit">SHIP</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
     <!-- dup -->
-    <span class="big-word">CODE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word lit">BUILD</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word">DEPLOY</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word lit">SCALE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word">ITERATE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
-    <span class="big-word lit">SHIP</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">â€¢</span>
+    <span class="big-word">CODE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word lit">BUILD</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word">DEPLOY</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word lit">SCALE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word">ITERATE</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
+    <span class="big-word lit">SHIP</span><span style="color:var(--accent);font-size:48px;font-weight:900;padding:0 8px">&bull;</span>
   </div>
 </div>
 
@@ -702,7 +704,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 
   <div class="skills-grid">
     <div class="skill-card reveal">
-      <div class="skill-card-title"><span class="icon">ðŸ¤–</span>GenAI & LLMs</div>
+      <div class="skill-card-title"><span class="icon">AI</span>GenAI & LLMs</div>
       <div class="skill-items">
         <div><div class="skill-row"><span class="skill-name">OpenAI / Claude</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
         <div><div class="skill-row"><span class="skill-name">LangChain / LangGraph</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
@@ -712,7 +714,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
     </div>
     <div class="skill-card reveal reveal-d1">
-      <div class="skill-card-title"><span class="icon">âš¡</span>Backend & Cloud</div>
+      <div class="skill-card-title"><span class="icon">BE</span>Backend & Cloud</div>
       <div class="skill-items">
         <div><div class="skill-row"><span class="skill-name">Python / FastAPI</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
         <div><div class="skill-row"><span class="skill-name">Docker / ECS</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
@@ -722,7 +724,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
     </div>
     <div class="skill-card reveal reveal-d2">
-      <div class="skill-card-title"><span class="icon">ðŸ“Š</span>ML, Data & Automation</div>
+      <div class="skill-card-title"><span class="icon">ML</span>ML, Data & Automation</div>
       <div class="skill-items">
         <div><div class="skill-row"><span class="skill-name">Scikit-learn</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
         <div><div class="skill-row"><span class="skill-name">TensorFlow / PyTorch</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
@@ -737,39 +739,38 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="certs-row">
     <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c reveal">
       <div class="cert-thumb"><img src="assets/certificates/AI 900.jpg" alt="Azure AI Fundamentals certificate"/></div>
-      <div><div class="cert-name">Azure AI Fundamentals</div><div class="cert-issuer">Microsoft · AI-900</div></div>
+      <div class="cert-copy"><div class="cert-name">Azure AI Fundamentals</div><div class="cert-issuer">Microsoft - AI-900</div></div>
       <div class="cert-badge">VERIFIED ?</div>
     </a>
     <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c reveal reveal-d1">
       <div class="cert-thumb"><img src="assets/certificates/GENAI-Leader.jpg" alt="Generative AI Leader certificate"/></div>
-      <div><div class="cert-name">Generative AI Leader</div><div class="cert-issuer">Google Cloud</div></div>
+      <div class="cert-copy"><div class="cert-name">Generative AI Leader</div><div class="cert-issuer">Google Cloud</div></div>
       <div class="cert-badge">VERIFIED ?</div>
     </a>
     <div class="cert-c reveal reveal-d2">
       <div class="cert-thumb"><img src="assets/certificates/NCC.jpg" alt="NCC C Certificate"/></div>
-      <div><div class="cert-name">NCC C Certificate</div><div class="cert-issuer">National Cadet Corps · Bravo</div></div>
+      <div class="cert-copy"><div class="cert-name">NCC C Certificate</div><div class="cert-issuer">National Cadet Corps - Bravo</div></div>
       <div class="cert-badge" style="background:rgba(34,211,160,.1);border-color:rgba(34,211,160,.3);">CERTIFIED</div>
     </div>
     <div class="cert-c reveal reveal-d3">
       <div class="cert-thumb"><img src="assets/certificates/Newgen certificate pinnacle.jpg" alt="Pinnacle Performance Award certificate from Newgen"/></div>
-      <div>
+      <div class="cert-copy">
         <div class="cert-name">Pinnacle Performance Award</div>
-        <div class="cert-issuer">Newgen Software · I&amp;M Team</div>
+        <div class="cert-issuer">Newgen Software - I&amp;M Team</div>
+        <div class="cert-note">Received for dedication and commitment to the I&amp;M Team, reflecting consistent ownership and dependable delivery.</div>
       </div>
       <div class="cert-badge" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.28);color:var(--amber);">AWARD</div>
     </div>
     <div class="cert-c reveal reveal-d4">
       <div class="cert-thumb"><img src="assets/certificates/Newgen certificate high five.jpg" alt="High Five Award certificate from Newgen"/></div>
-      <div>
+      <div class="cert-copy">
         <div class="cert-name">High Five Award</div>
-        <div class="cert-issuer">Newgen Software · Fast ramp-up &amp; ownership</div>
+        <div class="cert-issuer">Newgen Software - Fast ramp-up &amp; ownership</div>
+        <div class="cert-note">Recognized for swift adaptation and a proactive approach as a new team member, establishing myself quickly as an effective process owner.</div>
       </div>
       <div class="cert-badge" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.28);color:var(--accent);">RECOGNITION</div>
     </div>
   </div>
-  <p class="reveal" style="margin-top:18px;color:var(--text2);font-size:14px;line-height:1.8;max-width:900px;">
-    I received the Pinnacle Performance Award from Newgen for my dedication and commitment to the I&amp;M Team, and the High Five Award for my swift adaptation and proactive approach as a new team member. These recognitions reflect fast ownership, adaptability, and meaningful contribution in a short time.
-  </p>
 </div>
 </section>
 
@@ -780,12 +781,12 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <div class="reveal">
       <h2 class="contact-h">Let's talk<br>about your <span>AI build</span><br>or next role.</h2>
       <p class="contact-sub">Open to full-time AI Engineer roles, freelance GenAI projects, and automation work. Email me directly at <a href="mailto:ashish210200@gmail.com" style="color:var(--text);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);">ashish210200@gmail.com</a>.</p>
-      <div class="avail-chip">Available for new projects â€” response &lt; 24 hrs</div>
+      <div class="avail-chip">Available for new projects - response &lt; 24 hrs</div>
       <div class="contact-links">
-        <a href="mailto:ashish210200@gmail.com" class="clink"><div class="clink-ico">âœ‰ï¸</div><div><div class="clink-lbl">EMAIL</div><div class="clink-val">ashish210200@gmail.com</div></div></a>
-        <a href="https://linkedin.com/in/ashish-chaturvedi-484360222" target="_blank" class="clink"><div class="clink-ico">ðŸ’¼</div><div><div class="clink-lbl">LINKEDIN</div><div class="clink-val">ashish-chaturvedi-484360222</div></div></a>
-        <a href="https://github.com/ASHTOW2102" target="_blank" class="clink"><div class="clink-ico">ðŸ™</div><div><div class="clink-lbl">GITHUB</div><div class="clink-val">github.com/ASHTOW2102</div></div></a>
-        <a href="https://huggingface.co/AshishChaturvedi7" target="_blank" class="clink"><div class="clink-ico">ðŸ¤—</div><div><div class="clink-lbl">HUGGINGFACE</div><div class="clink-val">AshishChaturvedi7</div></div></a>
+        <a href="mailto:ashish210200@gmail.com" class="clink"><div class="clink-ico">EM</div><div><div class="clink-lbl">EMAIL</div><div class="clink-val">ashish210200@gmail.com</div></div></a>
+        <a href="https://linkedin.com/in/ashish-chaturvedi-484360222" target="_blank" class="clink"><div class="clink-ico">IN</div><div><div class="clink-lbl">LINKEDIN</div><div class="clink-val">ashish-chaturvedi-484360222</div></div></a>
+        <a href="https://github.com/ASHTOW2102" target="_blank" class="clink"><div class="clink-ico">GH</div><div><div class="clink-lbl">GITHUB</div><div class="clink-val">github.com/ASHTOW2102</div></div></a>
+        <a href="https://huggingface.co/AshishChaturvedi7" target="_blank" class="clink"><div class="clink-ico">HF</div><div><div class="clink-lbl">HUGGINGFACE</div><div class="clink-val">AshishChaturvedi7</div></div></a>
       </div>
     </div>
     <div class="contact-form reveal reveal-d1">
@@ -795,7 +796,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="form-group"><label>SUBJECT</label><input type="text" placeholder="Project type / Role"/></div>
       <div class="form-group"><label>MESSAGE</label><textarea placeholder="Tell me about your project or opportunity..."></textarea></div>
-      <button class="form-submit" type="button" onclick="handleSubmit(event)">Send Message â†’</button>
+      <button class="form-submit" type="button" onclick="handleSubmit(event)">Send Message -&gt;</button>
     </div>
   </div>
 </div>
@@ -803,8 +804,8 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><span>ashish</span>.dev Â· Noida, UP ðŸ‡®ðŸ‡³</div>
-  <div class="footer-copy">Â© 2026 Ashish Chaturvedi. Software Developer & AI Engineer.</div>
+  <div class="footer-logo"><span>ashish</span>.dev - Noida, UP, India</div>
+  <div class="footer-copy">&copy; 2026 Ashish Chaturvedi. Software Developer &amp; AI Engineer.</div>
   <div class="footer-links">
     <a href="https://github.com/ASHTOW2102" target="_blank">GitHub</a>
     <a href="https://linkedin.com/in/ashish-chaturvedi-484360222" target="_blank">LinkedIn</a>
@@ -827,11 +828,11 @@ function showSvc(id,btn){
 
 // â”€â”€ Terminal Animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const termCmds=[
-  {cmd:'git push origin main', out:'ðŸš€ Deployed to Production', extra:'âœ“ BBC News AI pipeline live'},
-  {cmd:'docker build -t ai-app .', out:'Successfully built a1b2c3d', extra:'âœ“ Image pushed to ECR'},
-  {cmd:'python rag_pipeline.py', out:'âœ“ 200 docs indexed (2.1s)', extra:'âœ“ Vector store updated'},
-  {cmd:'aws bedrock invoke-agent', out:'âœ“ Agent response: 24ms', extra:'âœ“ RAG context retrieved'},
-  {cmd:'pytest tests/ -v', out:'23 passed, 0 failed (1.4s)', extra:'âœ“ All checks green'},
+  {cmd:'git push origin main', out:'Deployed to production', extra:'[OK] BBC News AI pipeline live'},
+  {cmd:'docker build -t ai-app .', out:'Successfully built a1b2c3d', extra:'[OK] Image pushed to ECR'},
+  {cmd:'python rag_pipeline.py', out:'[OK] 200 docs indexed (2.1s)', extra:'[OK] Vector store updated'},
+  {cmd:'aws bedrock invoke-agent', out:'[OK] Agent response: 24ms', extra:'[OK] RAG context retrieved'},
+  {cmd:'pytest tests/ -v', out:'23 passed, 0 failed (1.4s)', extra:'[OK] All checks green'},
 ];
 let tIdx=0,tCharIdx=0,tPhase='typing';
 const termCmd=document.getElementById('termCmd');
@@ -877,7 +878,7 @@ function handleSubmit(e){
   window.location.href='mailto:ashish210200@gmail.com?subject='+mailSubject+'&body='+body;
   btn.textContent='Opening Email...';
   btn.style.background='var(--green)';
-  setTimeout(()=>{btn.textContent='Send Message â†’';btn.style.background='';},2500);
+  setTimeout(()=>{btn.textContent='Send Message ->';btn.style.background='';},2500);
 }
 
 // â”€â”€ Smooth active nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
