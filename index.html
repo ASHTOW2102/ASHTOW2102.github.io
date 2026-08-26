@@ -389,6 +389,50 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 .reveal.visible{opacity:1;transform:none;}
 .reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}.reveal-d4{transition-delay:.4s;}
 
+/* -- SCROLL PROGRESS -- */
+#scrollProgress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:200;
+  background:linear-gradient(90deg,var(--accent),var(--green),var(--accent2));
+  box-shadow:0 0 10px rgba(45,212,191,.6);pointer-events:none;}
+
+/* -- CURSOR GLOW -- */
+.cursor-glow{
+  position:fixed;top:0;left:0;width:620px;height:620px;margin:-310px 0 0 -310px;
+  border-radius:50%;pointer-events:none;z-index:5;mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(45,212,191,.16) 0%,rgba(249,115,22,.08) 42%,transparent 70%);
+  opacity:0;transition:opacity .5s ease;will-change:transform;
+}
+.cursor-glow.active{opacity:1;}
+@media (hover:none),(pointer:coarse){.cursor-glow{display:none;}}
+@media (prefers-reduced-motion:reduce){.cursor-glow{display:none;}}
+
+/* -- FLOATING ORBS -- */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);z-index:0;pointer-events:none;}
+.orb1{width:440px;height:440px;background:rgba(45,212,191,.24);top:-120px;left:-140px;animation:floatOrb1 24s ease-in-out infinite alternate;}
+.orb2{width:400px;height:400px;background:rgba(249,115,22,.18);bottom:-140px;right:-100px;animation:floatOrb2 28s ease-in-out infinite alternate;}
+@keyframes floatOrb1{from{transform:translate(0,0);}to{transform:translate(70px,90px);}}
+@keyframes floatOrb2{from{transform:translate(0,0);}to{transform:translate(-80px,-70px);}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none;}}
+@media (max-width:780px){.orb{display:none;}}
+
+/* -- HERO PARTICLE CANVAS -- */
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.8;}
+.hero-grid{position:relative;z-index:1;}
+
+/* -- 3D TILT CARDS -- */
+.tilt-card{transition:transform .2s cubic-bezier(.2,.8,.2,1);will-change:transform;}
+
+/* -- SPOTLIGHT HOVER -- */
+.spot{position:relative;z-index:0;overflow:hidden;}
+.spot::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(45,212,191,.16),transparent 62%);
+  opacity:0;transition:opacity .35s ease;pointer-events:none;
+}
+.spot:hover::before{opacity:1;}
+
+/* -- COUNT UP -- */
+.count-val{font-variant-numeric:tabular-nums;}
+
 @media (max-width: 1100px){
   nav{padding:0 24px;}
   .wrap{padding:0 24px;}
@@ -473,6 +517,11 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 </head>
 <body>
 
+<div id="scrollProgress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><div class="dot"></div>ashish.dev</a>
@@ -489,6 +538,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 
 <!-- HERO -->
 <section class="section" id="hero">
+<canvas id="heroCanvas"></canvas>
 <div class="wrap">
 <div class="hero-grid">
   <div class="hero-left reveal">
@@ -504,9 +554,9 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <span class="proof-chip">Banking + media domains</span>
     </div>
     <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n">3<sup>+</sup></div><div class="hstat-l">Years Experience</div></div>
-      <div class="hstat"><div class="hstat-n">60<sup>%</sup></div><div class="hstat-l">Effort Reduced</div></div>
-      <div class="hstat"><div class="hstat-n">99<sup>.9</sup></div><div class="hstat-l">% Uptime</div></div>
+      <div class="hstat"><div class="hstat-n"><span class="count-val" data-count="3">0</span><sup>+</sup></div><div class="hstat-l">Years Experience</div></div>
+      <div class="hstat"><div class="hstat-n"><span class="count-val" data-count="60">0</span><sup>%</sup></div><div class="hstat-l">Effort Reduced</div></div>
+      <div class="hstat"><div class="hstat-n"><span class="count-val" data-count="99">0</span><sup>.9</sup></div><div class="hstat-l">% Uptime</div></div>
     </div>
     <div class="hero-actions">
       <a href="#services" class="btn-main">View Expertise</a>
@@ -516,7 +566,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 
   <div class="hero-right hero-card-wrap reveal reveal-d1">
     <!-- Code card -->
-    <div class="code-card">
+    <div class="code-card tilt-card">
       <div class="code-card-header">
         <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
         <span class="card-filename">AshishChaturvedi.ts</span>
@@ -536,7 +586,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     </div>
 
     <!-- Terminal -->
-    <div class="term-card">
+    <div class="term-card tilt-card">
       <div class="term-header">
         <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
         <span class="term-title">terminal - zsh</span>
@@ -549,7 +599,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     </div>
 
     <!-- Monitor -->
-    <div class="monitor-card">
+    <div class="monitor-card tilt-card">
       <div class="monitor-row"><span class="monitor-label"><span class="dot-online"></span>LLM Orchestration</span><span class="monitor-status s-green">Online</span></div>
       <div class="monitor-row"><span class="monitor-label"><span class="dot-online"></span>RAG Pipeline</span><span class="monitor-status s-green">Running</span></div>
       <div class="monitor-row"><span class="monitor-label"><span class="dot-online"></span>API Gateway</span><span class="monitor-status s-blue">24ms</span></div>
@@ -623,7 +673,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="sec-label reveal">Highlights</div>
   <h2 class="sec-h2 reveal">Events, hackathons,<br>and field <em>work</em>.</h2>
   <div class="events-grid">
-    <div class="event-card preview-card reveal" tabindex="0">
+    <div class="event-card preview-card spot reveal" tabindex="0">
       <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="IIIT Delhi AI hackathon event"/></div>
       <div class="event-copy">
         <div class="event-tag">Conducted</div>
@@ -632,7 +682,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
       </div>
     </div>
-    <div class="event-card preview-card reveal reveal-d1" tabindex="0">
+    <div class="event-card preview-card spot reveal reveal-d1" tabindex="0">
       <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="IIT Banaras AI hackathon event"/></div>
       <div class="event-copy">
         <div class="event-tag">Conducted</div>
@@ -641,7 +691,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="event-desc">Contributed to AI hackathon execution at IIT Banaras, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
       </div>
     </div>
-    <div class="event-card preview-card reveal reveal-d2" tabindex="0">
+    <div class="event-card preview-card spot reveal reveal-d2" tabindex="0">
       <div class="event-media"><img src="assets/events/Newgen recog.jpg" alt="Newgen Software Campus Cadre 2024 Tech Buddy appreciation"/></div>
       <div class="event-copy">
         <div class="event-tag">Appreciation</div>
@@ -660,10 +710,10 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="sec-label reveal">How I Work</div>
   <h2 class="sec-h2 reveal" style="margin-bottom:40px;">Your vision. My systems.<br><em>Real results</em>.</h2>
   <div class="process-grid">
-    <div class="proc-step reveal"><div class="proc-num">01</div><div class="proc-title">Understand</div><div class="proc-desc">Deep-dive into your problem, requirements, and business goals. No fluff, just clarity.</div></div>
-    <div class="proc-step reveal reveal-d1"><div class="proc-num">02</div><div class="proc-title">Architect</div><div class="proc-desc">Design the technical roadmap - LLM strategy, data pipelines, API architecture.</div></div>
-    <div class="proc-step reveal reveal-d2"><div class="proc-num">03</div><div class="proc-title">Build</div><div class="proc-desc">Clean, production-grade code with regular demos, feedback loops, and full transparency.</div></div>
-    <div class="proc-step reveal reveal-d3"><div class="proc-num">04</div><div class="proc-title">Deploy</div><div class="proc-desc">Docker + cloud deployment with monitoring, guardrails, and post-launch support.</div></div>
+    <div class="proc-step spot reveal"><div class="proc-num">01</div><div class="proc-title">Understand</div><div class="proc-desc">Deep-dive into your problem, requirements, and business goals. No fluff, just clarity.</div></div>
+    <div class="proc-step spot reveal reveal-d1"><div class="proc-num">02</div><div class="proc-title">Architect</div><div class="proc-desc">Design the technical roadmap - LLM strategy, data pipelines, API architecture.</div></div>
+    <div class="proc-step spot reveal reveal-d2"><div class="proc-num">03</div><div class="proc-title">Build</div><div class="proc-desc">Clean, production-grade code with regular demos, feedback loops, and full transparency.</div></div>
+    <div class="proc-step spot reveal reveal-d3"><div class="proc-num">04</div><div class="proc-title">Deploy</div><div class="proc-desc">Docker + cloud deployment with monitoring, guardrails, and post-launch support.</div></div>
   </div>
 </div>
 </section>
@@ -694,7 +744,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
           <span class="svc-tag">n8n</span><span class="svc-tag">Power Automate</span><span class="svc-tag">Vector DBs</span>
         </div>
       </div>
-      <div class="svc-visual">
+      <div class="svc-visual spot">
         <div class="svc-metric">
           <div><div class="metric-row"><span class="metric-label">OpenAI / Anthropic</span><span class="metric-val s-green">92%</span></div><div class="metric-bar"><div class="metric-fill" style="width:92%"></div></div></div>
           <div><div class="metric-row"><span class="metric-label">LangChain / LangGraph</span><span class="metric-val s-green">92%</span></div><div class="metric-bar"><div class="metric-fill" style="width:92%"></div></div></div>
@@ -711,7 +761,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="svc-desc">Building robust, scalable APIs and microservices that power AI applications and enterprise systems. From REST to event-driven architectures, production-ready from day one.</div>
         <div class="svc-tags"><span class="svc-tag">Python</span><span class="svc-tag">FastAPI</span><span class="svc-tag">Node.js</span><span class="svc-tag">Java</span><span class="svc-tag">REST APIs</span><span class="svc-tag">PostgreSQL</span><span class="svc-tag">MySQL</span></div>
       </div>
-      <div class="svc-visual">
+      <div class="svc-visual spot">
         <div class="svc-metric">
           <div><div class="metric-row"><span class="metric-label">Python / FastAPI</span><span class="metric-val s-green">95%</span></div><div class="metric-bar"><div class="metric-fill" style="width:95%"></div></div></div>
           <div><div class="metric-row"><span class="metric-label">Node.js</span><span class="metric-val s-blue">78%</span></div><div class="metric-bar"><div class="metric-fill" style="width:78%"></div></div></div>
@@ -727,7 +777,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="svc-desc">Containerising and deploying AI services on AWS with zero-downtime releases. Achieved 99.9% uptime for enterprise AI workloads using Docker + ECS + API Gateway.</div>
         <div class="svc-tags"><span class="svc-tag">Docker</span><span class="svc-tag">AWS ECS</span><span class="svc-tag">S3</span><span class="svc-tag">API Gateway</span><span class="svc-tag">Azure</span><span class="svc-tag">GitHub Actions</span></div>
       </div>
-      <div class="svc-visual">
+      <div class="svc-visual spot">
         <div class="svc-metric">
           <div><div class="metric-row"><span class="metric-label">Docker</span><span class="metric-val s-green">88%</span></div><div class="metric-bar"><div class="metric-fill" style="width:88%"></div></div></div>
           <div><div class="metric-row"><span class="metric-label">AWS (ECS/S3/GW)</span><span class="metric-val s-green">85%</span></div><div class="metric-bar"><div class="metric-fill" style="width:85%"></div></div></div>
@@ -743,7 +793,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="svc-desc">End-to-end machine learning pipelines - from data preprocessing and feature engineering to model training, evaluation, and deployment on HuggingFace.</div>
         <div class="svc-tags"><span class="svc-tag">TensorFlow</span><span class="svc-tag">PyTorch</span><span class="svc-tag">Scikit-learn</span><span class="svc-tag">Pandas</span><span class="svc-tag">NumPy</span><span class="svc-tag">Gradio</span><span class="svc-tag">HuggingFace</span></div>
       </div>
-      <div class="svc-visual">
+      <div class="svc-visual spot">
         <div class="svc-metric">
           <div><div class="metric-row"><span class="metric-label">Scikit-learn</span><span class="metric-val s-green">85%</span></div><div class="metric-bar"><div class="metric-fill" style="width:85%"></div></div></div>
           <div><div class="metric-row"><span class="metric-label">TensorFlow / PyTorch</span><span class="metric-val s-blue">75%</span></div><div class="metric-bar"><div class="metric-fill" style="width:75%"></div></div></div>
@@ -759,7 +809,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div class="svc-desc">Building complete applications from database schema to UI - integrating AI backends with intuitive front-ends. Power Automate, Gradio, and client-facing AI interfaces.</div>
         <div class="svc-tags"><span class="svc-tag">JavaScript</span><span class="svc-tag">HTML/CSS</span><span class="svc-tag">Power Automate</span><span class="svc-tag">Gradio</span><span class="svc-tag">Playwright</span><span class="svc-tag">n8n</span></div>
       </div>
-      <div class="svc-visual">
+      <div class="svc-visual spot">
         <div class="svc-metric">
           <div><div class="metric-row"><span class="metric-label">JavaScript / HTML</span><span class="metric-val s-blue">78%</span></div><div class="metric-bar"><div class="metric-fill" style="width:78%"></div></div></div>
           <div><div class="metric-row"><span class="metric-label">Power Automate</span><span class="metric-val s-green">85%</span></div><div class="metric-bar"><div class="metric-fill" style="width:85%"></div></div></div>
@@ -798,7 +848,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <h2 class="sec-h2 reveal">Tools I <em>trust</em>.</h2>
 
   <div class="skills-grid">
-    <div class="skill-card reveal">
+    <div class="skill-card spot reveal">
       <div class="skill-card-title"><span class="icon">AI</span>GenAI & LLMs</div>
       <div class="skill-items">
         <div><div class="skill-row"><span class="skill-name">OpenAI / Claude</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
@@ -808,7 +858,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div><div class="skill-row"><span class="skill-name">MCP Servers / Tools</span><span class="skill-pct">86%</span></div><div class="skill-bar"><div class="skill-fill" style="width:86%"></div></div></div>
       </div>
     </div>
-    <div class="skill-card reveal reveal-d1">
+    <div class="skill-card spot reveal reveal-d1">
       <div class="skill-card-title"><span class="icon">BE</span>Backend & Cloud</div>
       <div class="skill-items">
         <div><div class="skill-row"><span class="skill-name">Python / FastAPI</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
@@ -818,7 +868,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
         <div><div class="skill-row"><span class="skill-name">API Gateway / CI-CD</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
       </div>
     </div>
-    <div class="skill-card reveal reveal-d2">
+    <div class="skill-card spot reveal reveal-d2">
       <div class="skill-card-title"><span class="icon">ML</span>ML, Data & Automation</div>
       <div class="skill-items">
         <div><div class="skill-row"><span class="skill-name">Scikit-learn</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
@@ -832,7 +882,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 
   <h3 style="font-weight:800;font-size:22px;color:#fff;margin:48px 0 20px;letter-spacing:0;">Certifications & Awards</h3>
   <div class="certs-row">
-    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c preview-card reveal">
+    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c preview-card spot reveal">
       <div class="cert-thumb"><img src="assets/certificates/AI 900.jpg" alt="Azure AI Fundamentals certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">Azure AI Fundamentals</div>
@@ -841,7 +891,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c preview-card reveal reveal-d1">
+    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c preview-card spot reveal reveal-d1">
       <div class="cert-thumb"><img src="assets/certificates/GENAI-Leader.jpg" alt="Generative AI Leader certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">Generative AI Leader</div>
@@ -850,7 +900,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <div class="cert-c preview-card reveal reveal-d2" tabindex="0">
+    <div class="cert-c preview-card spot reveal reveal-d2" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/NCC.jpg" alt="NCC C Certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">NCC C Certificate</div>
@@ -859,7 +909,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(163,230,53,.1);border-color:rgba(163,230,53,.3);">CERTIFIED</div>
     </div>
-    <div class="cert-c preview-card reveal reveal-d3" tabindex="0">
+    <div class="cert-c preview-card spot reveal reveal-d3" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/Newgen certificate pinnacle.jpg" alt="Pinnacle Performance Award certificate from Newgen"/></div>
       <div class="cert-copy">
         <div class="cert-name">Pinnacle Performance Award</div>
@@ -868,7 +918,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.28);color:var(--amber);">AWARD</div>
     </div>
-    <div class="cert-c preview-card reveal reveal-d4" tabindex="0">
+    <div class="cert-c preview-card spot reveal reveal-d4" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/Newgen certificate high five.jpg" alt="High Five Award certificate from Newgen"/></div>
       <div class="cert-copy">
         <div class="cert-name">High Five Award</div>
@@ -877,7 +927,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(45,212,191,.12);border-color:rgba(45,212,191,.28);color:var(--accent);">RECOGNITION</div>
     </div>
-    <a href="https://www.credly.com/badges/10b3cf5b-fd09-44af-b3d2-fab917076aae" target="_blank" class="cert-c preview-card reveal reveal-d1">
+    <a href="https://www.credly.com/badges/10b3cf5b-fd09-44af-b3d2-fab917076aae" target="_blank" class="cert-c preview-card spot reveal reveal-d1">
       <div class="cert-thumb"><img src="assets/certificates/claude-certified-architect.png" alt="Claude Certified Architect - Foundations certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">Claude Certified Architect</div>
@@ -886,7 +936,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/ab911cdd-dc9b-434f-b3e9-fed476c85aed" target="_blank" class="cert-c preview-card reveal reveal-d2">
+    <a href="https://www.credly.com/badges/ab911cdd-dc9b-434f-b3e9-fed476c85aed" target="_blank" class="cert-c preview-card spot reveal reveal-d2">
       <div class="cert-thumb"><img src="assets/certificates/claude-certified-developer.png" alt="Claude Certified Developer - Foundations certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">Claude Certified Developer</div>
@@ -895,7 +945,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/9063e00e-9899-48c5-a391-1afc8cfad322" target="_blank" class="cert-c preview-card reveal reveal-d3">
+    <a href="https://www.credly.com/badges/9063e00e-9899-48c5-a391-1afc8cfad322" target="_blank" class="cert-c preview-card spot reveal reveal-d3">
       <div class="cert-thumb"><img src="assets/certificates/claude-certified-associate.png" alt="Claude Certified Associate - Foundations certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">Claude Certified Associate</div>
@@ -904,7 +954,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <div class="cert-c preview-card reveal reveal-d4" tabindex="0">
+    <div class="cert-c preview-card spot reveal reveal-d4" tabindex="0">
       <div class="cert-thumb"><img src="assets/certificates/openai-technical-practitioner.png" alt="OpenAI Technical Practitioner certificate"/></div>
       <div class="cert-copy">
         <div class="cert-name">OpenAI Technical Practitioner</div>
@@ -947,10 +997,10 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <p class="contact-sub">Open to full-time AI Engineer roles, freelance GenAI projects, and automation work. Email me directly at <a href="mailto:ashish210200@gmail.com" style="color:var(--text);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);">ashish210200@gmail.com</a>.</p>
       <div class="avail-chip">Available for new projects - response &lt; 24 hrs</div>
       <div class="contact-links">
-        <a href="mailto:ashish210200@gmail.com" class="clink"><div class="clink-ico">✉</div><div><div class="clink-lbl">EMAIL</div><div class="clink-val">ashish210200@gmail.com</div></div></a>
-        <a href="https://linkedin.com/in/ashish-chaturvedi-484360222" target="_blank" class="clink"><div class="clink-ico">in</div><div><div class="clink-lbl">LINKEDIN</div><div class="clink-val">ashish-chaturvedi-484360222</div></div></a>
-        <a href="https://github.com/ASHTOW2102" target="_blank" class="clink"><div class="clink-ico">⌘</div><div><div class="clink-lbl">GITHUB</div><div class="clink-val">github.com/ASHTOW2102</div></div></a>
-        <a href="https://huggingface.co/AshishChaturvedi7" target="_blank" class="clink"><div class="clink-ico">◉</div><div><div class="clink-lbl">HUGGINGFACE</div><div class="clink-val">AshishChaturvedi7</div></div></a>
+        <a href="mailto:ashish210200@gmail.com" class="clink spot"><div class="clink-ico">✉</div><div><div class="clink-lbl">EMAIL</div><div class="clink-val">ashish210200@gmail.com</div></div></a>
+        <a href="https://linkedin.com/in/ashish-chaturvedi-484360222" target="_blank" class="clink spot"><div class="clink-ico">in</div><div><div class="clink-lbl">LINKEDIN</div><div class="clink-val">ashish-chaturvedi-484360222</div></div></a>
+        <a href="https://github.com/ASHTOW2102" target="_blank" class="clink spot"><div class="clink-ico">⌘</div><div><div class="clink-lbl">GITHUB</div><div class="clink-val">github.com/ASHTOW2102</div></div></a>
+        <a href="https://huggingface.co/AshishChaturvedi7" target="_blank" class="clink spot"><div class="clink-ico">◉</div><div><div class="clink-lbl">HUGGINGFACE</div><div class="clink-val">AshishChaturvedi7</div></div></a>
       </div>
     </div>
     <div class="contact-form reveal reveal-d1">
@@ -1134,6 +1184,149 @@ window.addEventListener('scroll',()=>{
     a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':'';
   });
 });
+
+// -- Scroll progress bar --------------------------------------------------
+(function(){
+  const bar=document.getElementById('scrollProgress');
+  if(!bar)return;
+  function update(){
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+
+// -- Cursor glow ------------------------------------------------------------
+(function(){
+  const glow=document.getElementById('cursorGlow');
+  if(!glow || !window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  let gx=innerWidth/2,gy=innerHeight/2,cx=gx,cy=gy;
+  window.addEventListener('mousemove',e=>{gx=e.clientX;gy=e.clientY;glow.classList.add('active');});
+  document.addEventListener('mouseleave',()=>glow.classList.remove('active'));
+  (function loop(){
+    cx+=(gx-cx)*.12;cy+=(gy-cy)*.12;
+    glow.style.transform='translate('+cx+'px,'+cy+'px)';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// -- 3D tilt on hero cards --------------------------------------------------
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  document.querySelectorAll('.tilt-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-0.5;
+      const py=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform='perspective(800px) rotateX('+(-py*8).toFixed(2)+'deg) rotateY('+(px*10).toFixed(2)+'deg)';
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
+})();
+
+// -- Spotlight hover on cards -------------------------------------------------
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  document.querySelectorAll('.spot').forEach(el=>{
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      el.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      el.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+})();
+
+// -- Animated stat counters --------------------------------------------------
+(function(){
+  const counters=document.querySelectorAll('.count-val');
+  if(!counters.length)return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      const el=entry.target;
+      const target=parseFloat(el.dataset.count);
+      const start=performance.now();
+      const duration=1300;
+      (function tick(now){
+        const p=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-p,3);
+        el.textContent=Math.round(target*eased);
+        if(p<1)requestAnimationFrame(tick);
+        else el.textContent=target;
+      })(start);
+      obs.unobserve(el);
+    });
+  },{threshold:.4});
+  counters.forEach(el=>obs.observe(el));
+})();
+
+// -- Hero particle network ----------------------------------------------------
+(function(){
+  const canvas=document.getElementById('heroCanvas');
+  const hero=document.getElementById('hero');
+  if(!canvas||!hero)return;
+  const ctx=canvas.getContext('2d');
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const colors=['45,212,191','163,230,53','249,115,22'];
+  let w,h,particles=[];
+  const mouse={x:-9999,y:-9999};
+
+  function resize(){
+    w=canvas.width=hero.offsetWidth;
+    h=canvas.height=hero.offsetHeight;
+  }
+  function initParticles(){
+    const count=Math.min(70,Math.max(24,Math.floor(w/24)));
+    particles=Array.from({length:count},()=>({
+      x:Math.random()*w,y:Math.random()*h,
+      vx:(Math.random()-0.5)*0.35,vy:(Math.random()-0.5)*0.35,
+      r:Math.random()*1.6+0.6,
+      c:colors[Math.floor(Math.random()*colors.length)]
+    }));
+  }
+  hero.addEventListener('mousemove',e=>{
+    const rect=hero.getBoundingClientRect();
+    mouse.x=e.clientX-rect.left;mouse.y=e.clientY-rect.top;
+  });
+  hero.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+
+  function frame(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of particles){
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;
+      if(p.y<0||p.y>h)p.vy*=-1;
+      const dx=mouse.x-p.x,dy=mouse.y-p.y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){p.x-=dx*0.0025;p.y-=dy*0.0025;}
+    }
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.strokeStyle='rgba('+a.c+','+((1-dist/130)*0.18).toFixed(3)+')';
+          ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    for(const p of particles){
+      ctx.beginPath();
+      ctx.fillStyle='rgba('+p.c+',0.55)';
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    if(!reduceMotion)requestAnimationFrame(frame);
+  }
+  resize();initParticles();
+  window.addEventListener('resize',()=>{resize();initParticles();});
+  if(!reduceMotion)requestAnimationFrame(frame);
+  else frame();
+})();
 </script>
 </body>
 </html>
