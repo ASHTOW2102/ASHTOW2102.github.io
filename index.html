@@ -59,18 +59,24 @@ nav{
   backdrop-filter:blur(24px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-logo{order:1;font-family:var(--mono);font-size:15px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:8px;text-decoration:none;}
 .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
-.nav-links{display:flex;gap:28px;}
+.nav-links{order:2;display:flex;gap:28px;}
 .nav-links a{color:var(--text2);font-size:14px;text-decoration:none;transition:color .2s;letter-spacing:.2px;}
 .nav-links a:hover{color:var(--text);}
 .nav-btn{
+  order:3;
   background:linear-gradient(135deg,var(--accent),var(--green));color:#07110d;font-family:var(--font);font-weight:800;font-size:13px;
   padding:8px 20px;border-radius:8px;text-decoration:none;
   transition:opacity .2s,transform .15s;
   box-shadow:0 12px 34px rgba(45,212,191,.24);
 }
 .nav-btn:hover{opacity:.88;transform:translateY(-1px);}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;background:transparent;border:1px solid var(--border2);border-radius:8px;cursor:pointer;padding:0;flex-shrink:0;}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--text);transition:transform .2s,opacity .2s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 /* â”€â”€ SECTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .section{position:relative;z-index:1;}
@@ -312,7 +318,7 @@ pre.code-block{
 .cert-verify-badge svg{width:11px;height:11px;}
 .cert-verify-badge.award{background:var(--amber);}
 .cert-verify-badge.recognition{background:var(--accent);}
-.cert-copy{flex:1;}
+.cert-copy{flex:1;min-width:0;}
 .cert-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .cert-ico.ms{background:rgba(0,120,212,.12);border:1px solid rgba(0,120,212,.2);}
 .cert-ico.gc{background:rgba(234,67,53,.08);border:1px solid rgba(234,67,53,.18);}
@@ -320,7 +326,7 @@ pre.code-block{
 .cert-name{font-weight:700;font-size:13px;color:#fff;margin-bottom:2px;}
 .cert-issuer{font-size:11px;color:var(--text3);}
 .cert-note{font-size:12px;color:var(--text2);line-height:1.6;margin-top:8px;}
-.cert-badge{margin-left:auto;background:rgba(163,230,53,.08);border:1px solid rgba(163,230,53,.2);border-radius:6px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--green);white-space:nowrap;box-shadow:0 0 0 rgba(163,230,53,0);transition:box-shadow .3s;}
+.cert-badge{margin-left:auto;flex-shrink:0;background:rgba(163,230,53,.08);border:1px solid rgba(163,230,53,.2);border-radius:6px;padding:3px 8px;font-family:var(--mono);font-size:10px;color:var(--green);white-space:nowrap;box-shadow:0 0 0 rgba(163,230,53,0);transition:box-shadow .3s;}
 .cert-c:hover .cert-badge{box-shadow:0 0 16px rgba(163,230,53,.28);}
 
 .preview-modal{
@@ -368,6 +374,7 @@ pre.code-block{
 .clink{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color .2s,background .2s;}
 .clink:hover{border-color:var(--accent);background:rgba(45,212,191,.05);}
 .clink-ico{width:36px;height:36px;border-radius:8px;background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.16);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--accent);flex-shrink:0;}
+.clink-ico+div{min-width:0;flex:1;}
 .clink-ico svg{width:18px;height:18px;display:block;}
 .clink-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:1px;}
 .clink-val{font-size:13.5px;color:var(--text);font-weight:500;}
@@ -514,17 +521,22 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     flex-wrap:wrap;
   }
   .wrap{padding:0 18px;}
-  #hero{min-height:auto;padding:120px 0 48px;}
+  #hero{min-height:auto;padding:110px 0 48px;}
+  .nav-logo{order:1;}
+  .nav-btn{order:2;padding:8px 14px;font-size:12px;}
+  .nav-toggle{display:flex;order:3;}
   .nav-links{
-    order:3;
+    order:4;
     width:100%;
-    overflow-x:auto;
-    gap:18px;
-    padding-bottom:4px;
-    scrollbar-width:none;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
   }
-  .nav-links::-webkit-scrollbar{display:none;}
-  .nav-btn{padding:8px 14px;font-size:12px;}
+  .nav-links.open{max-height:320px;padding-top:6px;}
+  .nav-links a{width:100%;padding:12px 4px;border-bottom:1px solid var(--border);}
   .hero-h1{font-size:58px;letter-spacing:0;}
   .sec-h2{font-size:38px;}
   .hero-sub{font-size:15px;max-width:none;margin:22px 0 30px;}
@@ -588,7 +600,11 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><div class="dot"></div>ashish.dev</a>
-  <div class="nav-links">
+  <a href="#contact" class="nav-btn">Let's Talk</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
     <a href="#about">Story</a>
     <a href="#process">Process</a>
     <a href="#services">Expertise</a>
@@ -596,7 +612,6 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <a href="#events">Events</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="nav-btn">Let's Talk</a>
 </nav>
 
 <!-- HERO -->
@@ -1159,6 +1174,20 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 // â”€â”€ Scroll Reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// â”€â”€ Mobile Nav Toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const navToggle=document.getElementById('navToggle');
+const navLinks=document.getElementById('navLinks');
+navToggle.addEventListener('click',()=>{
+  const isOpen=navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open',isOpen);
+  navToggle.setAttribute('aria-expanded',String(isOpen));
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+}));
 
 // â”€â”€ Services Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function showSvc(id,btn){
