@@ -221,10 +221,11 @@ pre.code-block{
 /* events */
 #events{padding:90px 0;background:var(--bg2);}
 .events-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px;}
-.events-scroll{position:relative;max-width:640px;margin:12px auto 0;height:560px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);}
-.events-track{display:flex;flex-direction:column;gap:16px;animation:events-scroll-y 22s linear infinite;}
+.events-scroll{position:relative;overflow:hidden;margin-top:12px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);}
+.events-track{display:flex;flex-direction:row;gap:16px;width:max-content;animation:events-scroll-x 22s linear infinite;}
+.events-track .event-card{flex:0 0 340px;width:340px;}
 .events-scroll:hover .events-track,.events-scroll:focus-within .events-track{animation-play-state:paused;}
-@keyframes events-scroll-y{from{transform:translateY(0);}to{transform:translateY(-50%);}}
+@keyframes events-scroll-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @media(prefers-reduced-motion:reduce){.events-track{animation:none;}}
 .event-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s;}
 .event-card:hover{border-color:var(--accent);transform:translateY(-2px);}
