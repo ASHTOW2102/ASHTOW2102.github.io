@@ -313,6 +313,12 @@ pre.code-block{
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:2px;}
 
 .certs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.certs-scroll{position:relative;overflow:hidden;margin-top:12px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);}
+.certs-track{display:flex;flex-direction:row;gap:14px;width:max-content;animation:certs-scroll-x 32s linear infinite;}
+.certs-track .cert-c{flex:0 0 380px;width:380px;}
+.certs-scroll:hover .certs-track,.certs-scroll:focus-within .certs-track{animation-play-state:paused;}
+@keyframes certs-scroll-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.certs-track{animation:none;}}
 .cert-c{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:14px;text-decoration:none;transition:border-color .2s;}
 .cert-c:hover{border-color:var(--accent);}
 .cert-thumb-wrap{position:relative;flex-shrink:0;}
@@ -1001,8 +1007,9 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   </div>
 
   <h3 style="font-weight:800;font-size:22px;color:#fff;margin:48px 0 20px;letter-spacing:0;">Certifications & Awards</h3>
-  <div class="certs-row">
-    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c preview-card spot tilt-card reveal">
+  <div class="certs-scroll reveal">
+   <div class="certs-track">
+    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c preview-card spot tilt-card">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/AI 900.jpg" alt="Azure AI Fundamentals certificate"/></div>
         <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1014,7 +1021,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c preview-card spot tilt-card reveal reveal-d1">
+    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c preview-card spot tilt-card">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/GENAI-Leader.jpg" alt="Generative AI Leader certificate"/></div>
         <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1026,7 +1033,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/10b3cf5b-fd09-44af-b3d2-fab917076aae" target="_blank" class="cert-c preview-card spot tilt-card reveal reveal-d2">
+    <a href="https://www.credly.com/badges/10b3cf5b-fd09-44af-b3d2-fab917076aae" target="_blank" class="cert-c preview-card spot tilt-card">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/claude-certified-architect.png" alt="Claude Certified Architect - Foundations certificate"/></div>
         <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1038,7 +1045,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/ab911cdd-dc9b-434f-b3e9-fed476c85aed" target="_blank" class="cert-c preview-card spot tilt-card reveal">
+    <a href="https://www.credly.com/badges/ab911cdd-dc9b-434f-b3e9-fed476c85aed" target="_blank" class="cert-c preview-card spot tilt-card">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/claude-certified-developer.png" alt="Claude Certified Developer - Foundations certificate"/></div>
         <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1050,7 +1057,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <a href="https://www.credly.com/badges/9063e00e-9899-48c5-a391-1afc8cfad322" target="_blank" class="cert-c preview-card spot tilt-card reveal reveal-d1">
+    <a href="https://www.credly.com/badges/9063e00e-9899-48c5-a391-1afc8cfad322" target="_blank" class="cert-c preview-card spot tilt-card">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/claude-certified-associate.png" alt="Claude Certified Associate - Foundations certificate"/></div>
         <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1062,7 +1069,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">VERIFIED</div>
     </a>
-    <div class="cert-c preview-card spot tilt-card reveal reveal-d2" tabindex="0">
+    <div class="cert-c preview-card spot tilt-card" tabindex="0">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/openai-technical-practitioner.png" alt="OpenAI Technical Practitioner certificate"/></div>
         <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
@@ -1074,7 +1081,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge">CERTIFIED</div>
     </div>
-    <div class="cert-c preview-card spot tilt-card reveal reveal-d3" tabindex="0">
+    <div class="cert-c preview-card spot tilt-card" tabindex="0">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/Newgen certificate pinnacle.jpg" alt="Pinnacle Performance Award certificate from Newgen"/></div>
         <span class="cert-verify-badge award"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></span>
@@ -1086,7 +1093,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.28);color:var(--amber);">AWARD</div>
     </div>
-    <div class="cert-c preview-card spot tilt-card reveal reveal-d4" tabindex="0">
+    <div class="cert-c preview-card spot tilt-card" tabindex="0">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/Newgen certificate high five.jpg" alt="High Five Award certificate from Newgen"/></div>
         <span class="cert-verify-badge recognition"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></span>
@@ -1098,7 +1105,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(45,212,191,.12);border-color:rgba(45,212,191,.28);color:var(--accent);">RECOGNITION</div>
     </div>
-    <div class="cert-c preview-card spot tilt-card reveal" tabindex="0">
+    <div class="cert-c preview-card spot tilt-card" tabindex="0">
       <div class="cert-thumb-wrap">
         <div class="cert-thumb"><img src="assets/certificates/NCC.jpg" alt="NCC C Certificate"/></div>
         <span class="cert-verify-badge award"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></span>
@@ -1110,6 +1117,115 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="cert-badge" style="background:rgba(163,230,53,.1);border-color:rgba(163,230,53,.3);">CERTIFIED</div>
     </div>
+    <a href="https://learn.microsoft.com/api/credentials/share/en-us/AshishChaturvedi-8033/B284216E17918581?sharingId=84573483C46E7A8C" target="_blank" class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/AI 900.jpg" alt=""/></div>
+        <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">Azure AI Fundamentals</div>
+        <div class="cert-issuer">Microsoft - AI-900</div>
+        <div class="cert-note">Validates core understanding of Azure AI services, machine learning concepts, and practical AI workloads on Microsoft cloud.</div>
+      </div>
+      <div class="cert-badge">VERIFIED</div>
+    </a>
+    <a href="https://www.credly.com/badges/e6bb211f-522c-4712-8b86-571dbac96acf/public_url" target="_blank" class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/GENAI-Leader.jpg" alt=""/></div>
+        <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">Generative AI Leader</div>
+        <div class="cert-issuer">Google Cloud</div>
+        <div class="cert-note">Covers responsible Generative AI adoption, business use case evaluation, and strategic understanding of enterprise AI transformation.</div>
+      </div>
+      <div class="cert-badge">VERIFIED</div>
+    </a>
+    <a href="https://www.credly.com/badges/10b3cf5b-fd09-44af-b3d2-fab917076aae" target="_blank" class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/claude-certified-architect.png" alt=""/></div>
+        <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">Claude Certified Architect</div>
+        <div class="cert-issuer">Anthropic - Foundations</div>
+        <div class="cert-note">Validates the ability to design robust, scalable systems built around Claude - covering architecture patterns, tool use, and safe deployment practices.</div>
+      </div>
+      <div class="cert-badge">VERIFIED</div>
+    </a>
+    <a href="https://www.credly.com/badges/ab911cdd-dc9b-434f-b3e9-fed476c85aed" target="_blank" class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/claude-certified-developer.png" alt=""/></div>
+        <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">Claude Certified Developer</div>
+        <div class="cert-issuer">Anthropic - Foundations</div>
+        <div class="cert-note">Confirms hands-on proficiency building applications with the Claude API - prompting, tool use, and integration best practices.</div>
+      </div>
+      <div class="cert-badge">VERIFIED</div>
+    </a>
+    <a href="https://www.credly.com/badges/9063e00e-9899-48c5-a391-1afc8cfad322" target="_blank" class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/claude-certified-associate.png" alt=""/></div>
+        <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">Claude Certified Associate</div>
+        <div class="cert-issuer">Anthropic - Foundations</div>
+        <div class="cert-note">Establishes foundational knowledge of Claude's capabilities, safety principles, and effective prompting fundamentals.</div>
+      </div>
+      <div class="cert-badge">VERIFIED</div>
+    </a>
+    <div class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/openai-technical-practitioner.png" alt=""/></div>
+        <span class="cert-verify-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">OpenAI Technical Practitioner</div>
+        <div class="cert-issuer">OpenAI</div>
+        <div class="cert-note">Demonstrates practical, technical proficiency working with OpenAI's models and tooling for building real-world AI applications.</div>
+      </div>
+      <div class="cert-badge">CERTIFIED</div>
+    </div>
+    <div class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/Newgen certificate pinnacle.jpg" alt=""/></div>
+        <span class="cert-verify-badge award"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">Pinnacle Performance Award</div>
+        <div class="cert-issuer">Newgen Software - I&amp;M Team</div>
+        <div class="cert-note">Received for dedication and commitment to the I&amp;M Team, reflecting consistent ownership and dependable delivery.</div>
+      </div>
+      <div class="cert-badge" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.28);color:var(--amber);">AWARD</div>
+    </div>
+    <div class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/Newgen certificate high five.jpg" alt=""/></div>
+        <span class="cert-verify-badge recognition"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">High Five Award</div>
+        <div class="cert-issuer">Newgen Software - Fast ramp-up &amp; ownership</div>
+        <div class="cert-note">Recognized for swift adaptation and a proactive approach as a new team member, establishing myself quickly as an effective process owner.</div>
+      </div>
+      <div class="cert-badge" style="background:rgba(45,212,191,.12);border-color:rgba(45,212,191,.28);color:var(--accent);">RECOGNITION</div>
+    </div>
+    <div class="cert-c preview-card spot tilt-card" tabindex="-1" aria-hidden="true">
+      <div class="cert-thumb-wrap">
+        <div class="cert-thumb"><img src="assets/certificates/NCC.jpg" alt=""/></div>
+        <span class="cert-verify-badge award"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></span>
+      </div>
+      <div class="cert-copy">
+        <div class="cert-name">NCC C Certificate</div>
+        <div class="cert-issuer">National Cadet Corps - Bravo</div>
+        <div class="cert-note">Represents disciplined training, leadership development, teamwork, and commitment built through the senior-most NCC certification track.</div>
+      </div>
+      <div class="cert-badge" style="background:rgba(163,230,53,.1);border-color:rgba(163,230,53,.3);">CERTIFIED</div>
+    </div>
+   </div>
   </div>
 </div>
 </section>
