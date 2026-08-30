@@ -221,6 +221,11 @@ pre.code-block{
 /* events */
 #events{padding:90px 0;background:var(--bg2);}
 .events-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:12px;}
+.events-scroll{position:relative;max-width:640px;margin:12px auto 0;height:560px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);}
+.events-track{display:flex;flex-direction:column;gap:16px;animation:events-scroll-y 22s linear infinite;}
+.events-scroll:hover .events-track,.events-scroll:focus-within .events-track{animation-play-state:paused;}
+@keyframes events-scroll-y{from{transform:translateY(0);}to{transform:translateY(-50%);}}
+@media(prefers-reduced-motion:reduce){.events-track{animation:none;}}
 .event-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s;}
 .event-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .event-media{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(45,212,191,.12),rgba(163,230,53,.08));}
@@ -757,32 +762,61 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 <div class="wrap" style="padding-top:90px;padding-bottom:90px;">
   <div class="sec-label reveal">Highlights</div>
   <h2 class="sec-h2 reveal">Events, hackathons,<br>and field <em>work</em>.</h2>
-  <div class="events-grid">
-    <div class="event-card preview-card spot reveal" tabindex="0">
-      <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="IIIT Delhi AI hackathon event"/></div>
-      <div class="event-copy">
-        <div class="event-tag">Conducted</div>
-        <div class="event-title">AI Hackathon Sessions at IIIT Delhi</div>
-        <div class="event-meta">Mentoring, technical guidance, and AI workflow discussions</div>
-        <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
+  <div class="events-scroll reveal">
+    <div class="events-track">
+      <div class="event-card preview-card spot" tabindex="0">
+        <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="IIIT Delhi AI hackathon event"/></div>
+        <div class="event-copy">
+          <div class="event-tag">Conducted</div>
+          <div class="event-title">AI Hackathon Sessions at IIIT Delhi</div>
+          <div class="event-meta">Mentoring, technical guidance, and AI workflow discussions</div>
+          <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
+        </div>
       </div>
-    </div>
-    <div class="event-card preview-card spot reveal reveal-d1" tabindex="0">
-      <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="IIT (BHU) Varanasi AI hackathon event"/></div>
-      <div class="event-copy">
-        <div class="event-tag">Conducted</div>
-        <div class="event-title">AI Hackathon Sessions at IIT (BHU) Varanasi</div>
-        <div class="event-meta">Hands-on support for applied AI and prototyping</div>
-        <div class="event-desc">Contributed to AI hackathon execution at IIT (BHU) Varanasi, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
+      <div class="event-card preview-card spot" tabindex="0">
+        <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="IIT (BHU) Varanasi AI hackathon event"/></div>
+        <div class="event-copy">
+          <div class="event-tag">Conducted</div>
+          <div class="event-title">AI Hackathon Sessions at IIT (BHU) Varanasi</div>
+          <div class="event-meta">Hands-on support for applied AI and prototyping</div>
+          <div class="event-desc">Contributed to AI hackathon execution at IIT (BHU) Varanasi, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
+        </div>
       </div>
-    </div>
-    <div class="event-card preview-card spot reveal reveal-d2" tabindex="0">
-      <div class="event-media"><img src="assets/events/Newgen recog.jpg" alt="Newgen Software Campus Cadre 2024 Tech Buddy appreciation"/></div>
-      <div class="event-copy">
-        <div class="event-tag">Appreciation</div>
-        <div class="event-title">Tech Buddy for Campus Cadre 2024 at Newgen</div>
-        <div class="event-meta">Mentoring new software engineers during their learning journey</div>
-        <div class="event-desc">Appreciated by Newgen Software for my role as a Tech Buddy during the Learning Journey of Campus Cadre 2024. It was a pleasure to mentor, support, and help onboard new software engineers with practical guidance.</div>
+      <div class="event-card preview-card spot" tabindex="0">
+        <div class="event-media"><img src="assets/events/Newgen recog.jpg" alt="Newgen Software Campus Cadre 2024 Tech Buddy appreciation"/></div>
+        <div class="event-copy">
+          <div class="event-tag">Appreciation</div>
+          <div class="event-title">Tech Buddy for Campus Cadre 2024 at Newgen</div>
+          <div class="event-meta">Mentoring new software engineers during their learning journey</div>
+          <div class="event-desc">Appreciated by Newgen Software for my role as a Tech Buddy during the Learning Journey of Campus Cadre 2024. It was a pleasure to mentor, support, and help onboard new software engineers with practical guidance.</div>
+        </div>
+      </div>
+      <div class="event-card preview-card spot" tabindex="-1" aria-hidden="true">
+        <div class="event-media"><img src="assets/events/iiit-delhi.jpg" alt="" /></div>
+        <div class="event-copy">
+          <div class="event-tag">Conducted</div>
+          <div class="event-title">AI Hackathon Sessions at IIIT Delhi</div>
+          <div class="event-meta">Mentoring, technical guidance, and AI workflow discussions</div>
+          <div class="event-desc">Participated in conducting AI hackathon activities at IIIT Delhi, supporting idea validation, implementation direction, and applied AI problem solving for student teams.</div>
+        </div>
+      </div>
+      <div class="event-card preview-card spot" tabindex="-1" aria-hidden="true">
+        <div class="event-media"><img src="assets/events/iit-banaras.jpg" alt="" /></div>
+        <div class="event-copy">
+          <div class="event-tag">Conducted</div>
+          <div class="event-title">AI Hackathon Sessions at IIT (BHU) Varanasi</div>
+          <div class="event-meta">Hands-on support for applied AI and prototyping</div>
+          <div class="event-desc">Contributed to AI hackathon execution at IIT (BHU) Varanasi, helping teams shape practical use cases and convert ideas into working prototypes with clear implementation pathways.</div>
+        </div>
+      </div>
+      <div class="event-card preview-card spot" tabindex="-1" aria-hidden="true">
+        <div class="event-media"><img src="assets/events/Newgen recog.jpg" alt="" /></div>
+        <div class="event-copy">
+          <div class="event-tag">Appreciation</div>
+          <div class="event-title">Tech Buddy for Campus Cadre 2024 at Newgen</div>
+          <div class="event-meta">Mentoring new software engineers during their learning journey</div>
+          <div class="event-desc">Appreciated by Newgen Software for my role as a Tech Buddy during the Learning Journey of Campus Cadre 2024. It was a pleasure to mentor, support, and help onboard new software engineers with practical guidance.</div>
+        </div>
       </div>
     </div>
   </div>
